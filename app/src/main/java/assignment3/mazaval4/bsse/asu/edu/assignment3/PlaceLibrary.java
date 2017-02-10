@@ -88,7 +88,7 @@ public class PlaceLibrary {
     }
 
     //use this to both add and edit the current field
-    protected void addObject(String key, PlaceDescription pd) {
+    protected void addObject(PlaceDescription pd) {
 
         lib.add(pd);
 
