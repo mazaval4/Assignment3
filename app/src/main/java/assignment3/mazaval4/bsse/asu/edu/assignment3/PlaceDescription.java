@@ -29,24 +29,24 @@ public class PlaceDescription {
         this.category = category;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public String getLongitude() {
+        return Double.toString(longitude);
     }
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public String getLatitude() {
+        return Double.toString(latitude);
     }
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public double getElevation() {
-        return elevation;
+    public String getElevation() {
+        return Double.toString(elevation);
     }
 
     public void setElevation(double elevation) {

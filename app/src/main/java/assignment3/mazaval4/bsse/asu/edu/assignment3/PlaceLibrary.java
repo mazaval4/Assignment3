@@ -5,6 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Hashtable;
 public class PlaceLibrary {
 
     private final static PlaceLibrary instance = new PlaceLibrary();
-    Hashtable<String,PlaceDescription> library = new Hashtable<String,PlaceDescription>();
+    ArrayList<PlaceDescription> lib = new ArrayList<PlaceDescription>();
 
     private PlaceLibrary() {}
 
@@ -71,7 +72,7 @@ public class PlaceLibrary {
 
                 placeDescription = new PlaceDescription(addressTitle,addressStreet,elevation,latitude,longitude,name,
                         image,description,category);
-                library.put(jsonObjectNames.getString(x),placeDescription);
+                lib.add(placeDescription);
             }
 
 
@@ -89,33 +90,45 @@ public class PlaceLibrary {
     //use this to both add and edit the current field
     protected void addObject(String key, PlaceDescription pd) {
 
-        //if exists delete and replace else just put into hash table
-        if(library.contains(key)) {
-            library.remove(key);
-            library.put(key,pd);
-        }
-        else{
-            library.put(key,pd);
-        }
+        lib.add(pd);
+
     }
 
     //if user wants to remove the place description
-    protected String removeObject(String key) {
-        PlaceDescription pd = library.remove(key);
-        return (pd != null) ? "Success":"Error";
+    protected String removeObject(String name) {
+
+        String returnString = "";
+        for(int x = 0; x < lib.size(); x++){
+            PlaceDescription desc = lib.get(x);
+            String descName = desc.getName();
+            if(descName.equals(name)){
+                lib.remove(x);
+                returnString = "Success";
+            }
+            else{
+             returnString = "error";
+            }
+        }
+        return returnString;
+    }
+
+    protected PlaceDescription getPlaceDesc(String name) {
+
+        String returnString = "";
+        PlaceDescription returnDesc = null;
+        for(int x = 0; x < lib.size(); x++){
+            PlaceDescription desc = lib.get(x);
+            String descName = desc.getName();
+            if(descName.equals(name)){
+              returnDesc =  desc;
+            }
+        }
+        return returnDesc;
     }
 
     //use this to populate the text views to edit
-    protected PlaceDescription getPlaceDescription(String key){
-        return library.get(key);
+    protected ArrayList getLibrary(){
+        return lib;
     }
-
-    //use this to populate the text views to edit
-    protected Hashtable getLibrary(){
-        return library;
-    }
-
-
-
 
 }
