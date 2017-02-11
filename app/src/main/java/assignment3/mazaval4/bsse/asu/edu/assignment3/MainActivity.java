@@ -89,9 +89,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent myIntent;
         switch (item.getItemId()) {
+
             case R.id.action_settings:
-                Intent myIntent = new Intent(MainActivity.this, AddPlace.class);
+                myIntent = new Intent(MainActivity.this, AddPlace.class);
+                MainActivity.this.startActivity(myIntent);
+                break;
+            case R.id.bearing:
+                myIntent = new Intent(MainActivity.this, Calculations.class);
                 MainActivity.this.startActivity(myIntent);
                 break;
             default:

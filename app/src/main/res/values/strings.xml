@@ -4,4 +4,5 @@
     <string name="action_settings">Add</string>
     <string name="title_activity_display_info">DisplayInfo</string>
     <string name="bearing">Calculation</string>
+    <string name="title_activity_calculations">Calculations</string>
 </resources>
