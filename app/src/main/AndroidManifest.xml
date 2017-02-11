@@ -21,7 +21,8 @@
         <activity
             android:name=".DisplayInfo"
             android:label="@string/title_activity_display_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddPlace"></activity>
     </application>
 
 </manifest>

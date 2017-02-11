@@ -94,6 +94,10 @@ public class PlaceLibrary {
 
     }
 
+    public void fromList(ArrayList<PlaceDescription> pl)
+    {
+
+    }
     //if user wants to remove the place description
     protected String removeObject(String name) {
 
